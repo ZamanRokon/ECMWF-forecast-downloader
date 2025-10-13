@@ -181,6 +181,7 @@ parallel -j "${CORES}" --bar '
 ' ::: $(seq -w 0 50)
 
 rm -r "$INDEX_DIR" "$VAR_DIR" "$TMP_DIR" "$OUT_DIR"
+rm -f "$LINK_FILE"
 
 echo
 echo "============================================================"
