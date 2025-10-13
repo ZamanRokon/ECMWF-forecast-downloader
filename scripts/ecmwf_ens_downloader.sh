@@ -24,7 +24,7 @@ MAIN_DIR="../data/ens/${DATE}_${TIME}_${VARIABLE}"
 INDEX_DIR="${MAIN_DIR}/index_files"
 VAR_DIR="${MAIN_DIR}/${VARIABLE}_data"
 TMP_DIR="${MAIN_DIR}/tmp"
-OUT_DIR="${MAIN_DIR}/merged_ens"
+OUT_DIR="${MAIN_DIR}"
 LINK_FILE="${MAIN_DIR}/grib2_links_${DATE}_${TIME}.txt"
 
 mkdir -p "$INDEX_DIR" "$VAR_DIR" "$TMP_DIR" "$OUT_DIR"
@@ -179,6 +179,8 @@ parallel -j "${CORES}" --bar '
     echo "⚠️ No files found for EN${ENS}"
   fi
 ' ::: $(seq -w 0 50)
+
+rm -r "$INDEX_DIR" "$VAR_DIR" "$TMP_DIR" "$OUT_DIR"
 
 echo
 echo "============================================================"
