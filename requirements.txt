@@ -1,0 +1,28 @@
+# ECMWF Forecast Downloader - Required Software
+# Install these tools on your system before running the scripts
+
+# Essential command-line tools:
+# 1. CDO (Climate Data Operators)
+#    Ubuntu/Debian: sudo apt-get install cdo
+#    CentOS/RHEL: sudo yum install cdo
+
+# 2. GNU Parallel
+#    Ubuntu/Debian: sudo apt-get install parallel
+#    CentOS/RHEL: sudo yum install parallel
+
+# 3. jq (JSON processor)
+#    Ubuntu/Debian: sudo apt-get install jq
+#    CentOS/RHEL: sudo yum install jq
+
+# 4. curl (for downloads)
+#    Ubuntu/Debian: sudo apt-get install curl
+#    CentOS/RHEL: sudo yum install curl
+
+# Required packages:
+cdo>=1.9.0
+parallel>=20180000
+jq>=1.5
+curl>=7.0
+
+# Optional but recommended:
+# nco (NetCDF Operators) - for additional NetCDF processing

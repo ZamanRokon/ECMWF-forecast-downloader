@@ -1,0 +1,33 @@
+# Data files - DON'T upload these to GitHub
+data/ens/*
+data/hres/*
+!data/ens/.gitkeep
+!data/hres/.gitkeep
+
+# Log files
+logs/*
+!logs/.gitkeep
+
+# Temporary files
+*.tmp
+*.temp
+*/tmp/
+*/temp/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Large data files
+*.grib2
+*.grib
+*.idx
+*.index
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Backup files
+*.bak
+*~
