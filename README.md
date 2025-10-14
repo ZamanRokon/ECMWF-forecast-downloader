@@ -49,7 +49,7 @@ bash scripts/ecmwf_hres_downloader.sh 20251012 00z 2t
   **Longitude:** 65° to 110°
   **Variable:** `tp` (total precipitation)  
   **Unit:** meters
-  [Note: If you want to change the coverage, change the extent in the bash scripts]
+  **Note:** If you want to change the coverage, change the extent in the bash scripts
 ---
 
 ## 📄 License
