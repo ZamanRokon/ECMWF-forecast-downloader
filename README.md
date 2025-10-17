@@ -46,7 +46,7 @@ bash scripts/ecmwf_hres_downloader.sh 20251012 00z 2t
 
 - Spatial coverage:  
 **Latitude:** 5° to 40°  
-**Longitude:** 65° to 110° 
+**Longitude:** 65° to 110°
 **Note:** If you want to change the coverage, change the extent in the bash scripts.
 ---
 
