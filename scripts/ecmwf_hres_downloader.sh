@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# ECMWF Open Data IFS HRES Downloader (Multi-variable, Clean)
+# ECMWF Open Data IFS HRES Downloader
 # ============================================================
 
 set -euo pipefail
@@ -84,7 +84,7 @@ for VARIABLE in "${VARIABLES[@]}"; do
   echo
 
   echo "🚀 Extracting ${VARIABLE} slices..."
-  export BASE_URL TMP_DIR VAR_DIR DATE VARIABLE
+  export BASE_URL TMP_DIR VAR_DIR DATE VARIABLE TIME
   jq -c '.[]' "${TMP_DIR}/${VARIABLE}_records_all.json" | \
     parallel -j "${CORES}" --bar '
       LINE={};
@@ -92,12 +92,29 @@ for VARIABLE in "${VARIABLES[@]}"; do
       OFFSET=$(echo "$LINE" | jq -r "._offset")
       LENGTH=$(echo "$LINE" | jq -r "._length")
       END=$((OFFSET + LENGTH - 1))
+
       mkdir -p "${VAR_DIR}"
       OUT="${VAR_DIR}/${VARIABLE}_${STEP}h.grib2"
       GRIB_URL="${BASE_URL}/${DATE}000000-${STEP}h-oper-fc.grib2"
-      [ -s "$OUT" ] && exit 0
-      curl -s -r ${OFFSET}-${END} -o "$OUT"
-    '
+
+      if [ -z "$GRIB_URL" ]; then
+        echo "❌ ERROR: Empty GRIB_URL for step ${STEP}"
+        exit 1
+      fi
+
+      if [ -s "$OUT" ]; then
+        echo "⏩ Skipping ${STEP}h (already exists)"
+        exit 0
+      fi
+
+      echo "⬇️  Downloading ${VARIABLE} step ${STEP}h from ${GRIB_URL}"
+      if curl -s -r ${OFFSET}-${END} -o "$OUT" "$GRIB_URL"; then
+        echo "✅ ${STEP}h"
+      else
+        echo "❌ Failed ${STEP}h"
+        rm -f "$OUT"
+      fi
+  '
 
   echo "✅ Extraction complete for ${VARIABLE}"
   echo
