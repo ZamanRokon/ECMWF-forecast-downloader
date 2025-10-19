@@ -28,10 +28,8 @@ bash scripts/ecmwf_ens_downloader.sh 20251012 00z tp 2t
 
 ```bash
 # Download high-resolution total precipitation for 2025-10-12 00z
-bash scripts/ecmwf_hres_downloader.sh 20251012 00z tp
+bash scripts/ecmwf_hres_downloader.sh 20251012 00z tp 2t
 
-# Download high-resolution 2m temperature
-bash scripts/ecmwf_hres_downloader.sh 20251012 00z 2t
 ```
 
 ---
