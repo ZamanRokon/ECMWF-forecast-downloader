@@ -51,5 +51,3 @@ bash scripts/ecmwf_hres_downloader.sh 20251012 00z tp 2t
 This project is released under the MIT License. See the `LICENSE` file for details.
 
 ---
-
-Let me know if you'd like to add sections for dependencies, troubleshooting, or automated scheduling.
